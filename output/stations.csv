@@ -1,0 +1,29 @@
+city_id,country_id,level,station_id,station_lat,station_local,station_long,station_name,station_timezone
+MXMEX,MX,station,MXMEX-ACO,19.635501,Acolman,-98.912003,Acolman,UTC +6:00
+MXMEX,MX,station,MXMEX-ATI,19.577009,Atizapán,-99.254244,Atizapán,UTC +6:00
+MXMEX,MX,station,MXMEX-CAM,19.468404,Camarones,-99.169794,Camarones,UTC +6:00
+MXMEX,MX,station,MXMEX-CHO,19.266948,Chalco,-98.886088,Chalco,UTC +6:00
+MXMEX,MX,station,MXMEX-COY,19.350258,Coyoacán,-99.157101,Coyoacán,UTC +6:00
+MXMEX,MX,station,MXMEX-CUA,19.365313,Cuajimalpa,-99.291705,Cuajimalpa,UTC +6:00
+MXMEX,MX,station,MXMEX-CUT,19.722186,Cuautitlán,-99.198602,Cuautitlán,UTC +6:00
+MXMEX,MX,station,MXMEX-FAC,19.482473,FES Acatlán,-99.243524,FES Acatlán,UTC +6:00
+MXMEX,MX,station,MXMEX-HGM,19.411617,Hospital General de México,-99.152207,Hospital General de México,UTC +6:00
+MXMEX,MX,station,MXMEX-IZT,19.384413,Iztacalco,-99.117641,Iztacalco,UTC +6:00
+MXMEX,MX,station,MXMEX-LLA,19.578792,Los Laureles,-99.039644,Los Laureles,UTC +6:00
+MXMEX,MX,station,MXMEX-LPR,19.534727,La Presa,-99.11772,La Presa,UTC +6:00
+MXMEX,MX,station,MXMEX-MER,19.42461,Merced,-99.119594,Merced,UTC +6:00
+MXMEX,MX,station,MXMEX-MON,19.460415,Montecillo,-98.902853,Montecillo,UTC +6:00
+MXMEX,MX,station,MXMEX-NEZ,19.391986,Nezahualcóyotl,-99.028181,Nezahualcóyotl,UTC +6:00
+MXMEX,MX,station,MXMEX-PED,19.325146,Pedregal,-99.204136,Pedregal,UTC +6:00
+MXMEX,MX,station,MXMEX-SAG,19.532968,San Agustín,-99.030324,San Agustín,UTC +6:00
+MXMEX,MX,station,MXMEX-SFE,19.357357,Santa FE,-99.262865,Santa FE,UTC +6:00
+MXMEX,MX,station,MXMEX-SJA,19.452592,San Juan de Aragón,-99.086095,San Juan de Aragón,UTC +6:00
+MXMEX,MX,station,MXMEX-SUR,19.31448,Santa Úrsula,-99.149994,Santa Úrsula,UTC +6:00
+MXMEX,MX,station,MXMEX-TAH,19.246459,Tláhuac,-99.010564,Tláhuac,UTC +6:00
+MXMEX,MX,station,MXMEX-TLA,19.529077,Tlalnepantla,-99.204597,Tlalnepantla,UTC +6:00
+MXMEX,MX,station,MXMEX-TLI,19.602542,Tultitlán,-99.177173,Tultitlán,UTC +6:00
+MXMEX,MX,station,MXMEX-TPN,19.257041,Tlalpan,-99.184177,Tlalpan,UTC +6:00
+MXMEX,MX,station,MXMEX-UAX,19.304441,UAM Xochimilco,-99.103629,UAM Xochimilco,UTC +6:00
+MXMEX,MX,station,MXMEX-UIZ,19.360794,UAM Iztapalapa,-99.07388,UAM Iztapalapa,UTC +6:00
+MXMEX,MX,station,MXMEX-VIF,19.658223,Villa de las Flores,-99.09659,Villa de las Flores,UTC +6:00
+MXMEX,MX,station,MXMEX-XAL,19.525995,Xalostoc,-99.0824,Xalostoc,UTC +6:00
