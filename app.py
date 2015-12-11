@@ -74,7 +74,7 @@ def gen_feed_info():
     feed_dict["feed_start-date"] = datetime.datetime.now().isoformat()
     feed_dict["feed_finish-date"] = datetime.datetime.now().isoformat()
     feed_df = pd.DataFrame.from_dict([feed_dict])
-    feed_df.to_csv("feed_info.csv", index=False)
+    feed_df.to_csv("output/feed_info.csv", index=False)
     return feed_dict["feed_id"]
 
 r = requests.get("http://148.243.232.113/calidadaire/xml/simat.json")
@@ -92,7 +92,7 @@ country = [{
         }]
 
 dataframe_country = pd.DataFrame(country)
-dataframe_country.to_csv("countries.csv", index=False)
+dataframe_country.to_csv("output/countries.csv", index=False)
 
 
 city = [{
@@ -105,7 +105,7 @@ city = [{
         }]
 
 dataframe_city = pd.DataFrame(city)
-dataframe_city.to_csv("cities.csv", index=False)
+dataframe_city.to_csv("output/cities.csv", index=False)
 
 estaciones =  {}
 estaciones_as_list = []
@@ -124,7 +124,7 @@ for station in stations:
     estaciones[station["name"]] = local_dict
     estaciones_as_list.append(local_dict)
 dataframe_estaciones = pd.DataFrame(estaciones_as_list)
-dataframe_estaciones.to_csv("stations.csv", index=False)
+dataframe_estaciones.to_csv("output/stations.csv", index=False)
 
 pollutants =  {}
 pollutants_as_list = []
@@ -177,4 +177,4 @@ for station in stations:
         else:
             hum_dict = {}
 pollutants_df = pd.DataFrame.from_dict(pollutants_as_list)
-pollutants_df.to_csv("pollutants.csv", index=False)
+pollutants_df.to_csv("output/pollutants.csv", index=False)
