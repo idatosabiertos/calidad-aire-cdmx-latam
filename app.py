@@ -130,7 +130,7 @@ pollutants =  {}
 pollutants_as_list = []
 feed_id = gen_feed_info()
 now = datetime.datetime.now()
-nowminusminuteandsecond = now - now.minute - now.second
+nowminusminuteandsecond = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
 current_time = datetime.datetime.now().isoformat()
 truncated_time = nowminusminuteandsecond.isoformat()
 for station in stations:
