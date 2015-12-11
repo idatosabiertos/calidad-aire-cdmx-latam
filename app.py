@@ -4,6 +4,7 @@ import itertools
 import operator
 import time
 import datetime
+import json
 
 def O3_IMECA2CONC(IMECA):
     conc = IMECA*0.11/100 # en ppm
@@ -78,7 +79,7 @@ def gen_feed_info():
     return feed_dict["feed_id"]
 
 r = requests.get("http://148.243.232.113/calidadaire/xml/simat.json")
-rtextencoded = r.text().encode("latin-1")
+rtextencoded = json.loads(r.text.decode("iso-8859-1").encode("utf-8"))
 stations = rtextencoded["pollutionMeasurements"]["stations"]
 units = {"NO2":"ppb","O3":"ppb","SO2":"ppb","PM10":"ug/m3","CO":"ppm"}
 methods = {"O3":"MXMEX-O3-1993","NO2":"MXMEX-NOx-1993","SO2":"MXMEX-SO2-1993","PM10":"MXMEX-PM10-1993", "Temp": "MXMEX-TEMP", "Hum": "MXMEX-HUM", "CO":"MXMEX-CO-1993"}
