@@ -68,8 +68,8 @@ def most_common(L):
 def gen_feed_info():
     now = datetime.datetime.now()
     feed_dict = {}
-    feed_dict["feed_id"] = "CDM-"+ str(now.year) + str(now.month) + str(now.day) + str(now.hour) + str(now.minute)
-    feed_dict["feed_publisher_name"] = "Secretaría de Medio Ambiente de la Ciudad de México"
+    feed_dict["feed_id"] = "MXMEX-"+ str(now.year) + str(now.month) + str(now.day) + str(now.hour) + str(now.minute)
+    feed_dict["feed_publisher-name"] = "Secretaría de Medio Ambiente de la Ciudad de México"
     feed_dict["feed_publisher-url"] = "http://www.aire.df.gob.mx/default.php"
     feed_dict["feed_start-date"] = datetime.datetime.now().isoformat()
     feed_dict["feed_finish-date"] = datetime.datetime.now().isoformat()
@@ -80,7 +80,7 @@ def gen_feed_info():
 r = requests.get("http://148.243.232.113/calidadaire/xml/simat.json")
 stations = r.json()["pollutionMeasurements"]["stations"]
 units = {"NO2":"ppb","O3":"ppb","SO2":"ppb","PM10":"ug/m3","CO":"ppm"}
-methods = {"O3":"CDM-O3-1993","NO2":"CDM-NOx-1993","SO2":"CDM-SO2-1993","PM10":"CDM-PM10-1993", "Temp": "CDM-TEMP", "Hum": "CDM-HUM", "CO":"CDM-CO-1993"}
+methods = {"O3":"MXMEX-O3-1993","NO2":"MXMEX-NOx-1993","SO2":"MXMEX-SO2-1993","PM10":"MXMEX-PM10-1993", "Temp": "MXMEX-TEMP", "Hum": "MXMEX-HUM", "CO":"MXMEX-CO-1993"}
 
 
 country = [{
@@ -97,11 +97,11 @@ dataframe_country.to_csv("countries.csv", index=False)
 
 city = [{
             "country_id": "MX",
-            "city_id": "CDM",
-            "country_lat": "19.38",
-            "country_long": "-99.08",
-            "country_name": "Ciudad de México y zona metropolitana",
-            "country_timezone": "UTC +6:00"
+            "city_id": "MXMEX",
+            "city_lat": "19.38",
+            "city_long": "-99.08",
+            "city_name": "Ciudad de México y zona metropolitana",
+            "city_timezone": "UTC +6:00"
         }]
 
 dataframe_city = pd.DataFrame(city)
@@ -111,9 +111,9 @@ estaciones =  {}
 estaciones_as_list = []
 for station in stations:
     local_dict = {
-        "station_id": "CDM-" + station["shortName"],
-        "country_id": "MEX",
-        "city_id": "CDM",
+        "station_id": "MXMEX-" + station["shortName"],
+        "country_id": "MX",
+        "city_id": "MXMEX",
         "station_local" : station["name"],
         "station_name" : station["name"],
         "level": "station",
@@ -129,16 +129,19 @@ dataframe_estaciones.to_csv("stations.csv", index=False)
 pollutants =  {}
 pollutants_as_list = []
 feed_id = gen_feed_info()
+now = datetime.datetime.now()
+nowminusminuteandsecond = now - now.minute - now.second
 current_time = datetime.datetime.now().isoformat()
+truncated_time = nowminusminuteandsecond.isoformat()
 for station in stations:
     if station["pollutant"] == "n.d":
         next
     else:
         local_dict = {
-            "station_id": "CDM-" + station["shortName"],
+            "station_id": "MXMEX-" + station["shortName"],
             "pollutant_id": station["pollutant"],
             "pollutant_unit": units[station["pollutant"]],
-            "pollutant_update-time": current_time,
+            "pollutant_update-time": truncated_time,
             "pollutant_value": IMECA2CONC(station["pollutant"],station["imecaPoints"]),
             "pollutant_averaging": 1,
             "method_id" : methods[station["pollutant"]],
@@ -147,10 +150,10 @@ for station in stations:
         pollutants_as_list.append(local_dict)
         if station["temperature"] is not '':
             temp_dict = {
-                "station_id": "CDM-" + station["shortName"],
+                "station_id": "MXMEX-" + station["shortName"],
                 "pollutant_id": "Temp",
                 "pollutant_unit": "C",
-                "pollutant_update-time": current_time,
+                "pollutant_update-time": truncated_time,
                 "pollutant_value": station["temperature"],
                 "pollutant_averaging": 1,
                 "method_id" : methods[station["pollutant"]],
@@ -161,10 +164,10 @@ for station in stations:
             temp_dict = {}
         if station["humidity"] is not '':
             hum_dict = {
-                "station_id": "CDM-" + station["shortName"],
+                "station_id": "MXMEX-" + station["shortName"],
                 "pollutant_id": "Hum",
                 "pollutant_unit": "%",
-                "pollutant_update-time": current_time,
+                "pollutant_update-time": truncated_time,
                 "pollutant_value": station["humidity"],
                 "pollutant_averaging": 1,
                 "method_id" : methods[station["pollutant"]],
