@@ -82,14 +82,41 @@ stations = r.json()["pollutionMeasurements"]["stations"]
 units = {"NO2":"ppb","O3":"ppb","SO2":"ppb","PM10":"ug/m3","CO":"ppm"}
 methods = {"O3":"CDM-O3-1993","NO2":"CDM-NOx-1993","SO2":"CDM-SO2-1993","PM10":"CDM-PM10-1993", "Temp": "CDM-TEMP", "Hum": "CDM-HUM", "CO":"CDM-CO-1993"}
 
+
+country = [{
+            "country_id": "MX",
+            "country_lat": "19.24",
+            "country_long": "-99.09",
+            "country_name": "México",
+            "country_timezone": "UTC +6:00"
+        }]
+
+dataframe_country = pd.DataFrame(country)
+dataframe_country.to_csv("countries.csv", index=False)
+
+
+city = [{
+            "country_id": "MX",
+            "city_id": "CDM",
+            "country_lat": "19.38",
+            "country_long": "-99.08",
+            "country_name": "Ciudad de México y zona metropolitana",
+            "country_timezone": "UTC +6:00"
+        }]
+
+dataframe_city = pd.DataFrame(city)
+dataframe_city.to_csv("cities.csv", index=False)
+
 estaciones =  {}
 estaciones_as_list = []
 for station in stations:
     local_dict = {
         "station_id": "CDM-" + station["shortName"],
-        "station_country": "MEX",
+        "country_id": "MEX",
+        "city_id": "CDM",
         "station_local" : station["name"],
         "station_name" : station["name"],
+        "level": "station",
         "station_long" : station["location"].split(",")[1],
         "station_lat" : station["location"].split(",")[0],
         "station_timezone": "UTC +6:00"
